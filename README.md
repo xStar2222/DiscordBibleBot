@@ -9,3 +9,15 @@ A bot made using Discord.py that will let a user select any book and chapter of 
 
 # Join the Bible Bot Disocrd Server -
 https://discord.gg/5PmJ3DHa7u
+
+# To Do
+
+- [x] Add !random command
+- [x] Add the command to look up specific verses (Ex. !Psalms 3:3) 
+- [ ] Upload .json data for all books and add support for certain book randomizer (Ex. !Luke) 
+
+
+# Images - 
+![alt text](https://media.discordapp.net/attachments/1067344909578813460/1068364377813692426/image.png)
+------
+![alt text](https://media.discordapp.net/attachments/1067344909578813460/1068364938030100510/image.png)
