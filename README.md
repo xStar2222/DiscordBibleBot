@@ -1,5 +1,5 @@
 # Discord Bible Bot
-A bot made using Discord.py that will let a user select any book and chapter of the bible and the bot will reply with the verse. Also has other features like !rnadom that sends a random verse.
+An open-source bot made using Discord.py that will let a user select any book and chapter of the bible and the bot will reply with the verse. Also has other features like !rnadom that sends a random verse.
 
 # Current Commands - 
 - `!random` - Sends a random Bible Verse
