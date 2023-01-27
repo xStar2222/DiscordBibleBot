@@ -6,3 +6,6 @@ A bot made using Discord.py that will let a user select any book and chapter of 
 - `!books` - Provides a list of all the books of the Bible
 - Allows you to send any verse in the Bible by using this format, ![Book] [Chapter]:[Verse], for example !Genesis 1:1 will return "In the beginning God created the heaven and the earth."
 - You can also send a random verse from a certain book using ![Book], for example !Genesis will send a random verse from only the book of Genesis.
+
+# Join the Bible Bot Disocrd Server -
+https://discord.gg/5PmJ3DHa7u
