@@ -1,17 +1,21 @@
 import json
 import discord
+import requests
 import random
 import os
 from discord.activity import Game
+from discord.ext import commands
+from bs4 import BeautifulSoup
 
 
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='!', intents=intents)
 
-# Startup Information
 @client.event
 async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='!bb-help'))
+
 
 
 @client.event
@@ -20,19 +24,15 @@ async def on_message(message):
     if command.startswith('!random'):
         with open('bible.json') as json_file:
             data = json.load(json_file)
-        # Select a random key from the dictionary
         random_key = random.choice(list(data.keys()))
-        # Access the value associated with the random key
         random_value = data[random_key]
         await message.reply(f"{random_key}\n\n{random_value}")
-
-    elif command.startswith('!Genesis'):
+    elif command == '!Genesis':
         with open('genesis.json') as json_file:
             data1 = json.load(json_file)
         random_key1 = random.choice(list(data1.keys()))
         random_value1 = data1[random_key1]
         await message.reply(f"{random_key1}\n\n{random_value1}")
-
 
 
     elif message.content.lower() == '!books':
@@ -41,18 +41,27 @@ async def on_message(message):
         await message.reply("Hi! Heres A Few Things I Can Do!" "\n" "\n" "`!books` - Provides a list of all the books of the Bible" "\n" "\n" "`!random` - Sends a random Bible Verse" "\n" "\n" "`!links` - Sends a few helpful links" "\n" "\n" "`!bb-help` - Sends this message" "\n" "\n" "To send a certain verse, please format the message like this, `!Genesis 1:1` Capitalization Matters!" "\n" "\n" "---------------------------------------------------------------------" "\n" "If you have any questions or suggestions please contact `xStar#2222`")
     elif message.content.lower() == "!links":
         await message.reply("Full KJV Bible - <https://www.kingjamesbibleonline.org/>" "\n" "\n" "Official Support Server - https://discord.gg/5PmJ3DHa7u")
-  
-
-    else: 
-        if message.content.startswith("!"):
+    elif command.startswith('!info'):
+        user_input = message.content[8:]
+        website_url = "https://www.openbible.info/topics/"
+        params = {"q": user_input}
+        response = requests.get(website_url, params=params)
+        data = response.text
+        soup = BeautifulSoup(data, 'html.parser')
+        elements = soup.find_all(class_='bibleref')
+        counter = 0
+        for element in elements:
+            if counter < 5:
+                await message.channel.send(element.get_text())
+                counter += 1
+    elif message.content.startswith("!"):
             command = message.content[1:]
             with open('bible.json') as json_file:
                 data = json.load(json_file)
-        if command in data:
-            await message.reply(data[command])  
-        else:
-            await message.reply("Hmmm, That Verse Wasn't Found." "\n" "\n" "Example: `!Genesis 1:1`" "\n" "\n" "Capitalization Matters!")
+            if command in data:
+                await message.reply(data[command])  
+            else:
+                await message.reply("Hmmm, That Verse Wasn't Found." "\n" "\n" "Example: `!Genesis 1:1`" "\n" "\n" "Capitalization Matters!")
 
 
-
-client.run('YOUR_TOKEN_HERE')
+client.run('YOUR TOKEN HERE')
