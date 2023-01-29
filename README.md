@@ -2,6 +2,7 @@
 An open-source bot made using Discord.py that will let a user select any book and chapter of the bible and the bot will reply with the verse. Also has other features like !rnadom that sends a random verse.
 
 # Current Commands - 
+{NEW!}- `!info [topic]` - Using this command allows you to enter a topic of your choice, and the bot will respond with 5 verses on that topic!
 - `!random` - Sends a random Bible Verse
 - `!books` - Provides a list of all the books of the Bible
 - Allows you to send any verse in the Bible by using this format, ![Book] [Chapter]:[Verse], for example !Genesis 1:1 will return "In the beginning God created the heaven and the earth."
