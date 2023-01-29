@@ -15,7 +15,10 @@ https://discord.gg/5PmJ3DHa7u
 
 - [x] Add !random command
 - [x] Add the command to look up specific verses (Ex. !Psalms 3:3) 
-- [ ] Upload .json data for all books and add support for certain book randomizer (Ex. !Luke) 
+- [ ] Upload .json data for all books and add support for certain book randomizer (Ex. !Luke)
+- [ ] Give the user a choice on how many verses the bot responds with when using the !info command.
+- [ ] Add error message for errors when something goes wrong with the !info command.
+- [ ] Show the text inside the verse that the bot sends when using the !info command (Low Priority)
 
 
 # Images - 
